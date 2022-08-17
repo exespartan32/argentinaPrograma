@@ -1,26 +1,31 @@
-<div class="row">
-    <h1>Educacion</h1>
-    <div class="col-lg-2"></div>
-    <div class="col-lg-10">
-        <ul class="list-group">
-            <li><h1>primario</h1> - <h3>(years)</h3></li>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima officiis vitae, libero saepe
-                voluptatibus pariatur rerum, dolores ipsa optio repellendus porro numquam, ratione laudantium tempore
-                incidunt blanditiis fuga fugiat molestias!
-            </p>
-            <li><h1>secundario</h1> - <h3>(years)</h3></li>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima officiis vitae, libero saepe
-                voluptatibus pariatur rerum, dolores ipsa optio repellendus porro numquam, ratione laudantium tempore
-                incidunt blanditiis fuga fugiat molestias!
-            </p>
-            <li><h1>terciario</h1> - <h3>(years)</h3></li>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima officiis vitae, libero saepe
-                voluptatibus pariatur rerum, dolores ipsa optio repellendus porro numquam, ratione laudantium tempore
-                incidunt blanditiis fuga fugiat molestias!
-            </p>
-        </ul>
+<div class="row text-center">
+    <h1>Experiencia</h1>
+    <div class="col-lg-2">
+        <button type="button" class="btn btn-dark text-white" routerLink="/nuevaExperiencia" *ngIf="isLogged">
+            Agregar nueva Experiencia <img src="../../../assets/img/icons/add-file.png" height="50" width="50">
+        </button>
+    </div>
+    <div class="col-lg-2 col-md-1 col-sm-1 col-xs-12"></div>
+    <div class="col-lg-10 col-md-11 col-sm-11 col-xs-12">
+        <table class="table">
+            <tbody>
+                <tr *ngFor="let Experiencia of expe">
+                    <td>
+                        <h2><strong>{{Experiencia.nombreE}}</strong></h2>
+                    </td>
+                    <td class="pt-3">{{Experiencia.descripcionE}}</td>
+                    <td *ngIf="isLogged">
+                        <button class="btn btn-dark text-white" routerLink="/editarExperiencia/{{Experiencia.id}}">
+                            Editar <img src="../../../assets/img/icons/editar.png" height="50" width="50">
+                        </button>
+                    </td>
+                    <td *ngIf="isLogged">
+                        <button class="btn btn-danger text-white" (click)="delete(Experiencia.id)">
+                            Eliminar <img src="../../../assets/img/icons/basura.png" height="50" width="50">
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

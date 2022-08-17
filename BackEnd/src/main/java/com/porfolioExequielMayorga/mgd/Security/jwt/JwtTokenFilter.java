@@ -4,7 +4,7 @@
  */
 package com.porfolioExequielMayorga.mgd.Security.jwt;
 
-import com.porfolioExequielMayorga.mgd.Security.Service.UserDetailsImplements;
+import com.porfolioExequielMayorga.mgd.Security.Service.UserDetailsImp;
 import java.io.IOException;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -22,14 +22,14 @@ import org.springframework.web.filter.OncePerRequestFilter;
  *
  * @author usuario
  */
-public class JwtTokenFilter extends OncePerRequestFilter {
-
+public class JwtTokenFilter extends OncePerRequestFilter{
     private final static Logger logger = LoggerFactory.getLogger(JwtProvider.class);
     @Autowired
     JwtProvider jwtProvider;
     @Autowired
-    UserDetailsImplements userDetailsImplements;
+    UserDetailsImp userDetailsImp;
 
+    // filtra el token
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         try {
@@ -37,7 +37,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
             if (token != null && jwtProvider.validateToken(token)) {
                 String nombreUsuario = jwtProvider.getNombreUsuarioFromToken(token);
 
-                UserDetails userDetails = userDetailsImplements.loadUserByUsername(nombreUsuario);
+                UserDetails userDetails = userDetailsImp.loadUserByUsername(nombreUsuario);
 
                 UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(userDetails,
                         null, userDetails.getAuthorities());
@@ -49,8 +49,8 @@ public class JwtTokenFilter extends OncePerRequestFilter {
         }
         filterChain.doFilter(request, response);
     }
-
-    private String getToken(HttpServletRequest request){
+    
+        private String getToken(HttpServletRequest request){
         String header = request.getHeader("Authorization");
         if(header != null && header.startsWith("Bearer"))
             return header.replace("Bearer", "");

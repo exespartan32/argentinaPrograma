@@ -5,7 +5,7 @@
 package com.porfolioExequielMayorga.mgd.Security.Service;
 
 import com.porfolioExequielMayorga.mgd.Security.Entity.Usuario;
-import com.porfolioExequielMayorga.mgd.Security.Repository.IUsuarioRepository;
+import com.porfolioExequielMayorga.mgd.Security.Repository.iUsuarioRepository;
 import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,21 +20,25 @@ import org.springframework.stereotype.Service;
 public class UsuarioService {
 
     @Autowired
-    IUsuarioRepository iUsuarioRepository;
+    iUsuarioRepository iusuarioRepository;
 
+    // devuelbe nombre del usuario 
     public Optional<Usuario> getByNombreUsuario(String nombreUsuario) {
-        return iUsuarioRepository.findByNombreUsuario(nombreUsuario);
+        return iusuarioRepository.findByNombreUsuario(nombreUsuario);
     }
 
-    public boolean existByNombreUsuario(String nombreUsuario) {
-        return iUsuarioRepository.existByNombreUsuario(nombreUsuario);
+    // compueba si existe nombre de usuario
+    public boolean existsByNombreUsuario(String nombreUsuario) {
+        return iusuarioRepository.existsByNombreUsuario(nombreUsuario);
     }
 
-    public boolean existByEmailUsuario(String email) {
-        return iUsuarioRepository.existByEmailUsuario(email);
+    // oompreba si existe email
+    public boolean existsByEmail(String email) {
+        return iusuarioRepository.existsByEmail(email);
     }
-    
-    public void save(Usuario usuario){
-        iUsuarioRepository.save(usuario);
+
+    // guarda los datos
+    public void save(Usuario usuario) {
+        iusuarioRepository.save(usuario);
     }
 }

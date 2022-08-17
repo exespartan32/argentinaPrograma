@@ -11,12 +11,13 @@ import javax.validation.constraints.NotBlank;
  * @author usuario
  */
 public class LoginUsuario {
+    
     @NotBlank
     private String nombreUsuario;
     @NotBlank
     private String password;
     
-    // Getter & Setters 
+    // Getters y Setters
     public String getNombreUsuario() {
         return nombreUsuario;
     }

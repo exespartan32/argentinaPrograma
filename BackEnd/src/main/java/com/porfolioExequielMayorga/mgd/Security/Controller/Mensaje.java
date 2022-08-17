@@ -12,7 +12,6 @@ public class Mensaje {
     private String mensaje;
     
     // constructor
-
     public Mensaje() {
     }
 
@@ -20,7 +19,7 @@ public class Mensaje {
         this.mensaje = mensaje;
     }
     
-    //Getter & Setters
+    // Getter y Setters
 
     public String getMensaje() {
         return mensaje;

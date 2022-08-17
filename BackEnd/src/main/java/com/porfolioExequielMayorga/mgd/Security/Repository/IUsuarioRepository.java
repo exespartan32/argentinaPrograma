@@ -14,9 +14,11 @@ import org.springframework.stereotype.Repository;
  * @author usuario
  */
 @Repository
-public interface IUsuarioRepository extends JpaRepository<Usuario, Integer>{
-    Optional<Usuario> findByNombreUsuario (String nombreUsuario);
+public interface iUsuarioRepository extends JpaRepository<Usuario, Integer>{
+    Optional<Usuario> findByNombreUsuario(String nombreUsuario);
     
-    boolean existByNombreUsuario  (String nombreUsuario);
-    boolean existByEmailUsuario (String email);
+    // ¿exiete el nombre de usuario?
+    boolean existsByNombreUsuario(String nombreUsuario);
+    // ¿exiete el email?
+    boolean existsByEmail(String email);
 }

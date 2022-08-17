@@ -22,6 +22,7 @@ import org.springframework.stereotype.Component;
  *
  * @author usuario
  */
+// esta clase genera el token y verifica que este bien armado
 @Component
 public class JwtProvider {
 
@@ -34,11 +35,11 @@ public class JwtProvider {
 
     public String GenerateToken(Authentication authentication) {
         UsuarioPrincipal usuarioPrincipal = (UsuarioPrincipal) authentication.getPrincipal();
-        return Jwts.builder()
+        return Jwts.builder().setSubject(usuarioPrincipal.getUsername())
                 .setSubject(usuarioPrincipal.getUsername())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(new Date().getTime() + expiration * 1000))
-                .signWith(SignatureAlgorithm.ES512, secret)
+                .signWith(SignatureAlgorithm.HS512, secret)
                 .compact();
     }
 

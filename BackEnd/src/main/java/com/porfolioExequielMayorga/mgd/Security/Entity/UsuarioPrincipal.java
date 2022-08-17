@@ -23,7 +23,7 @@ public class UsuarioPrincipal implements UserDetails {
     private String password;
     private Collection<? extends GrantedAuthority> authorities;
 
-    //constructor 
+    // constructor
     public UsuarioPrincipal(String nombre, String nombreUsuario, String email, String password, Collection<? extends GrantedAuthority> authorities) {
         this.nombre = nombre;
         this.nombreUsuario = nombreUsuario;
@@ -32,6 +32,7 @@ public class UsuarioPrincipal implements UserDetails {
         this.authorities = authorities;
     }
 
+    // contruir el usuario
     public static UsuarioPrincipal build(Usuario usuario) {
         List<GrantedAuthority> authorities = usuario.getRoles().stream()
                 .map(rol -> new SimpleGrantedAuthority(rol.getRolNombre().name())).collect(
@@ -43,6 +44,7 @@ public class UsuarioPrincipal implements UserDetails {
                 authorities);
     }
 
+    // metodos abstractos
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
@@ -85,4 +87,5 @@ public class UsuarioPrincipal implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 }

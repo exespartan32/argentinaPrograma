@@ -4,7 +4,7 @@
  */
 package com.porfolioExequielMayorga.mgd.Security;
 
-import com.porfolioExequielMayorga.mgd.Security.Service.UserDetailsImplements;
+import com.porfolioExequielMayorga.mgd.Security.Service.UserDetailsImp;
 import com.porfolioExequielMayorga.mgd.Security.jwt.JwtEntryPoint;
 import com.porfolioExequielMayorga.mgd.Security.jwt.JwtTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,28 +28,29 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class MainSecurity extends WebSecurityConfigurerAdapter{
+public class MainSecurity extends WebSecurityConfigurerAdapter {
+
     @Autowired
-    UserDetailsImplements userDetailsImplements;
-    
+    UserDetailsImp userDetailsImp;
     @Autowired
     JwtEntryPoint jwtEntryPoint;
-    
+
     @Bean
-    public JwtTokenFilter JwtTotenFilter(){
+    public JwtTokenFilter JwtTotenFilter() {
         return new JwtTokenFilter();
     }
-    
+
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    // metodoss abstractos
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/auth/**")
+                .antMatchers("**")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
@@ -59,14 +60,14 @@ public class MainSecurity extends WebSecurityConfigurerAdapter{
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-                http.addFilterBefore(JwtTotenFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(JwtTotenFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 
     @Override
     protected AuthenticationManager authenticationManager() throws Exception {
-        return super.authenticationManager();
+        return super.authenticationManager(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
-    
+
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
@@ -75,8 +76,8 @@ public class MainSecurity extends WebSecurityConfigurerAdapter{
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsImplements).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(userDetailsImp)
+                .passwordEncoder(passwordEncoder());
     }
-    
-    
+
 }
