@@ -17,15 +17,23 @@
                 <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">por favor, ingrese los datos de la nueva
                   experiencia laboral</h5>
 
-                <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+                <form (ngSubmit)="onCreate()" novalidate #f="ngForm" enctype="multipart/form-data">
+                  <!-- input nombre de la empresa -->
                   <div class="form-group pt-3">
                     <label for="nombreE">nombre de la Empresa</label>
                     <input type="text" name="nombreE" id="nombreE" class="form-control" [(ngModel)]="nombreE" required>
                   </div>
+                  <!-- input descripcion de la tarea -->
                   <div class="form-group pt-3">
                     <label for="descripcionE">Descripcion de la tarea</label>
                     <input type="text" name="descripcionE" id="descripcionE" class="form-control"
                       [(ngModel)]="descripcionE" required>
+                  </div>
+                  <!-- input logo de la empresa -->
+                  <div class="form-group pt-3">
+                    <label for="img">Logo de la empresa</label>
+                    <input type="file" name="imagenE" id="imagenE" class="form-control"
+                      [(ngModel)]="img" required>
                   </div>
                   <br>
                   <button type="submit" class="btn btn-primary text-white">

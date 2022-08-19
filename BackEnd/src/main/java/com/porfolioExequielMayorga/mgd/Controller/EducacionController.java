@@ -29,12 +29,13 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/educacion")
-@CrossOrigin(origins = "https://front-end-argentina-programa.web.app")
+// @CrossOrigin(origins = "https://front-end-argentina-programa.web.app")
+@CrossOrigin(origins = "https://http://localhost:8080")
 public class EducacionController {
 
     @Autowired
     EducacionService educacionService;
-    
+
     // trae todas las educaciones
     @GetMapping("/lista")
     public ResponseEntity<List<Educacion>> list() {
@@ -48,7 +49,6 @@ public class EducacionController {
         if (!educacionService.existsById(id)) {
             return new ResponseEntity(new Mensaje("No existe el ID"), HttpStatus.BAD_REQUEST);
         }
-
         Educacion educacion = educacionService.getOne(id).get();
         return new ResponseEntity(educacion, HttpStatus.OK);
     }
@@ -66,19 +66,19 @@ public class EducacionController {
     // crea nueva educacion
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody dtoEducacion dtoeducacion) {
-        if (StringUtils.isBlank(dtoeducacion.getNombreE())) {
+        if (StringUtils.isBlank(dtoeducacion.getNombreEducacion())) {
             return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
         }
-        if (educacionService.existsByNombreE(dtoeducacion.getNombreE())) {
+        if (educacionService.existsByNombreE(dtoeducacion.getNombreEducacion())) {
             return new ResponseEntity(new Mensaje("Ese nombre ya existe"), HttpStatus.BAD_REQUEST);
         }
-
         Educacion educacion = new Educacion(
-                dtoeducacion.getNombreE(), dtoeducacion.getDescripcionE()
+                dtoeducacion.getNombreEducacion(),
+                dtoeducacion.getDescripcionEducacion(),
+                dtoeducacion.getImagenEducacion()
         );
         educacionService.save(educacion);
         return new ResponseEntity(new Mensaje("Educacion creada"), HttpStatus.OK);
-
     }
 
     // actualiza educacion
@@ -87,21 +87,20 @@ public class EducacionController {
         if (!educacionService.existsById(id)) {
             return new ResponseEntity(new Mensaje("No existe el ID"), HttpStatus.NOT_FOUND);
         }
-        if (educacionService.existsByNombreE(dtoeducacion.getNombreE()) && educacionService.getByNombreE(dtoeducacion.getNombreE()).get().getId() != id) {
+        if (educacionService.existsByNombreE(dtoeducacion.getNombreEducacion()) && educacionService.getByNombreE(dtoeducacion.getNombreEducacion()).get().getId() != id) {
             return new ResponseEntity(new Mensaje("Ese nombre ya existe"), HttpStatus.BAD_REQUEST);
         }
-        if (StringUtils.isBlank(dtoeducacion.getNombreE())) {
-          return new ResponseEntity(new Mensaje("El campo no puede estar vacio"), HttpStatus.BAD_REQUEST);
+        if (StringUtils.isBlank(dtoeducacion.getNombreEducacion())) {
+            return new ResponseEntity(new Mensaje("El campo no puede estar vacio"), HttpStatus.BAD_REQUEST);
         }
 
         Educacion educacion = educacionService.getOne(id).get();
 
-        educacion.setNombreE(dtoeducacion.getNombreE());
-        educacion.setDescripcionE(dtoeducacion.getDescripcionE());
+        educacion.setNombreEducacion(dtoeducacion.getNombreEducacion());
+        educacion.setDescripcionEducacion(dtoeducacion.getDescripcionEducacion());
+        educacion.setImagenEducacion(dtoeducacion.getImagenEducacion());
 
         educacionService.save(educacion);
-
         return new ResponseEntity(new Mensaje("Educacion actualizada"), HttpStatus.OK);
-    } 
-    
+    }
 }

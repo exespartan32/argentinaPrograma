@@ -19,17 +19,21 @@ public class Educacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String nombreE;
-    private String descripcionE;
+    private String nombreEducacion;
+    private String descripcionEducacion;
+    private String imagenEducacion;
 
+    // constructor
     public Educacion() {
     }
 
-    public Educacion(String nombreE, String descripcionE) {
-        this.nombreE = nombreE;
-        this.descripcionE = descripcionE;
+    public Educacion(String nombreEducacion, String descripcionEducacion, String imagenEducacion) {
+        this.nombreEducacion = nombreEducacion;
+        this.descripcionEducacion = descripcionEducacion;
+        this.imagenEducacion = imagenEducacion;
     }
 
+    //Getters and setters
     public int getId() {
         return id;
     }
@@ -38,19 +42,27 @@ public class Educacion {
         this.id = id;
     }
 
-    public String getNombreE() {
-        return nombreE;
+    public String getNombreEducacion() {
+        return nombreEducacion;
     }
 
-    public void setNombreE(String nombreE) {
-        this.nombreE = nombreE;
+    public void setNombreEducacion(String nombreEducacion) {
+        this.nombreEducacion = nombreEducacion;
     }
 
-    public String getDescripcionE() {
-        return descripcionE;
+    public String getDescripcionEducacion() {
+        return descripcionEducacion;
     }
 
-    public void setDescripcionE(String descripcionE) {
-        this.descripcionE = descripcionE;
+    public void setDescripcionEducacion(String descripcionEducacion) {
+        this.descripcionEducacion = descripcionEducacion;
+    }
+
+    public String getImagenEducacion() {
+        return imagenEducacion;
+    }
+
+    public void setImagenEducacion(String imagenEducacion) {
+        this.imagenEducacion = imagenEducacion;
     }
 }

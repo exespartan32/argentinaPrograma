@@ -12,6 +12,7 @@ export class NewExperienciaComponent implements OnInit {
 
   nombreE: string = '';
   descripcionE: string = '';
+  img: string = '';
 
   constructor(private experienciaService: ExperienciaService, private router: Router) { }
 
