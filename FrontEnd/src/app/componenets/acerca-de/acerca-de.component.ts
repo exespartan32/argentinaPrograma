@@ -13,6 +13,8 @@ export class AcercaDeComponent implements OnInit {
 
   ngOnInit(): void {
     this.personaService.getPersona().subscribe(data => {this.persona = data})
+    //console.log(this.personaService)
+
   }
 
 }

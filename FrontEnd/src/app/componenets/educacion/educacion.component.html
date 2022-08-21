@@ -11,9 +11,12 @@
             <tbody>
                 <tr *ngFor="let Educacion of educacion">
                     <td>
-                        <h2><strong>{{Educacion.nombreE}}</strong></h2>
+                        <img src="{{Educacion.imagenEducacion}}" width="200" height="200">
                     </td>
-                    <td class="pt-3">{{Educacion.descripcionE}}</td>
+                    <td>
+                        <h2><strong>{{Educacion.nombreEducacion}}</strong></h2>
+                    </td>
+                    <td class="pt-3">{{Educacion.descripcionEducacion}}</td>
                     <td *ngIf="isLogged">
                         <button class="btn btn-dark text-white" routerLink="/editarEducacion/{{Educacion.id}}">
                             Editar <img src="../../../assets/img/icons/editar.png" height="50" width="50">

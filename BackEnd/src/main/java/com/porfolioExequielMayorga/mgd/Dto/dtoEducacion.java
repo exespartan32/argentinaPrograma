@@ -12,46 +12,45 @@ import javax.validation.constraints.NotBlank;
  */
 public class dtoEducacion {
 
-    @NotBlank
-    private String nombreEducacion;
-    @NotBlank
-    private String descripcionEducacion;
-    
-    private String imagenEducacion;
+	@NotBlank
+	private String nombreEducacion;
+	@NotBlank
+	private String descripcionEducacion;
 
-    // constructor
-    public dtoEducacion() {
-    }
+	private String imagenEducacion;
 
-    public dtoEducacion(String nombreEducacion, String descripcionEducacion, String imagenEducacion) {
-        this.nombreEducacion = nombreEducacion;
-        this.descripcionEducacion = descripcionEducacion;
-        this.imagenEducacion = imagenEducacion;
-    }
+	// constructor
+	public dtoEducacion() {
+	}
 
-    // Getters & Setters
-    public String getNombreEducacion() {
-        return nombreEducacion;
-    }
+	public dtoEducacion(String nombreEducacion, String descripcionEducacion, String imagenEducacion) {
+		this.nombreEducacion = nombreEducacion;
+		this.descripcionEducacion = descripcionEducacion;
+		this.imagenEducacion = imagenEducacion;
+	}
 
-    public void setNombreEducacion(String nombreEducacion) {
-        this.nombreEducacion = nombreEducacion;
-    }
+	// Getters & Setters
+	public String getNombreEducacion() {
+		return nombreEducacion;
+	}
 
-    public String getDescripcionEducacion() {
-        return descripcionEducacion;
-    }
+	public void setNombreEducacion(String nombreEducacion) {
+		this.nombreEducacion = nombreEducacion;
+	}
 
-    public void setDescripcionEducacion(String descripcionEducacion) {
-        this.descripcionEducacion = descripcionEducacion;
-    }
+	public String getDescripcionEducacion() {
+		return descripcionEducacion;
+	}
 
-    public String getImagenEducacion() {
-        return imagenEducacion;
-    }
+	public void setDescripcionEducacion(String descripcionEducacion) {
+		this.descripcionEducacion = descripcionEducacion;
+	}
 
-    public void setImagenEducacion(String imagenEducacion) {
-        this.imagenEducacion = imagenEducacion;
-    }
+	public String getImagenEducacion() {
+		return imagenEducacion;
+	}
 
+	public void setImagenEducacion(String imagenEducacion) {
+		this.imagenEducacion = imagenEducacion;
+	}
 }

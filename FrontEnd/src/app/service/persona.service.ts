@@ -13,7 +13,6 @@ export class PersonaService {
 
   public getPersona(): Observable<persona>{
   const dataPersona = this.http.get<persona>(this.URL+'traer/perfil')
-  //console.log(dataPersona)
     return dataPersona
   }
 }

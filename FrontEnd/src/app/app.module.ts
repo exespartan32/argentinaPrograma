@@ -24,6 +24,9 @@ import { NewExperienciaComponent } from './componenets/experiencia/new-experienc
 import { EditExperienciaComponent } from './componenets/experiencia/edit-experiencia.component';
 import { EditEducacionComponent } from './componenets/educacion/edit-educacion.component';
 import { NewEducacionComponent } from './componenets/educacion/new-educacion.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideStorage,getStorage } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -51,7 +54,9 @@ import { NewEducacionComponent } from './componenets/educacion/new-educacion.com
     FormsModule,
     BrowserAnimationsModule,
     // Specify ng-circle-progress as an import
-    NgCircleProgressModule.forRoot({})
+    NgCircleProgressModule.forRoot({}),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideStorage(() => getStorage())
   ],
   providers: [],
   bootstrap: [AppComponent]

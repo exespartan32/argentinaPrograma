@@ -16,6 +16,7 @@ public class dtoExperiencia {
     private String nombreExperiencia;
     @NotBlank
     private String descripcionExperiencia;
+    
     private String imagenExperiencia;
 
     // constructor
@@ -29,7 +30,6 @@ public class dtoExperiencia {
     }
 
     // Getters & Setters
-
     public String getNombreExperiencia() {
         return nombreExperiencia;
     }

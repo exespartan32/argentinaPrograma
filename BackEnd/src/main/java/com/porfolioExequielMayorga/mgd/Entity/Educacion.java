@@ -16,53 +16,54 @@ import javax.persistence.Id;
 @Entity
 public class Educacion {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String nombreEducacion;
-    private String descripcionEducacion;
-    private String imagenEducacion;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	private String nombreEducacion;
+	private String descripcionEducacion;
+	private String imagenEducacion;
 
-    // constructor
-    public Educacion() {
-    }
+	// constructor
+	public Educacion() {
+	}
 
-    public Educacion(String nombreEducacion, String descripcionEducacion, String imagenEducacion) {
-        this.nombreEducacion = nombreEducacion;
-        this.descripcionEducacion = descripcionEducacion;
-        this.imagenEducacion = imagenEducacion;
-    }
+	public Educacion(String nombreEducacion, String descripcionEducacion, String imagenEducacion) {
+		super();
+		this.nombreEducacion = nombreEducacion;
+		this.descripcionEducacion = descripcionEducacion;
+		this.imagenEducacion = imagenEducacion;
+	}
 
-    //Getters and setters
-    public int getId() {
-        return id;
-    }
+	// Setters & Getters
+	public int getId() {
+		return id;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public String getNombreEducacion() {
-        return nombreEducacion;
-    }
+	public String getNombreEducacion() {
+		return nombreEducacion;
+	}
 
-    public void setNombreEducacion(String nombreEducacion) {
-        this.nombreEducacion = nombreEducacion;
-    }
+	public void setNombreEducacion(String nombreEducacion) {
+		this.nombreEducacion = nombreEducacion;
+	}
 
-    public String getDescripcionEducacion() {
-        return descripcionEducacion;
-    }
+	public String getDescripcionEducacion() {
+		return descripcionEducacion;
+	}
 
-    public void setDescripcionEducacion(String descripcionEducacion) {
-        this.descripcionEducacion = descripcionEducacion;
-    }
+	public void setDescripcionEducacion(String descripcionEducacion) {
+		this.descripcionEducacion = descripcionEducacion;
+	}
 
-    public String getImagenEducacion() {
-        return imagenEducacion;
-    }
+	public String getImagenEducacion() {
+		return imagenEducacion;
+	}
 
-    public void setImagenEducacion(String imagenEducacion) {
-        this.imagenEducacion = imagenEducacion;
-    }
+	public void setImagenEducacion(String imagenEducacion) {
+		this.imagenEducacion = imagenEducacion;
+	}
 }

@@ -28,7 +28,7 @@ public class EducacionService {
         return rEducacion.findAll();
     }
 
-    // busca y devuelbe un esstudio por id
+    // busca y devuelbe un estudio por id
     public Optional<Educacion> getOne(int id) {
         return rEducacion.findById(id);
     }
